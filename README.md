@@ -5,9 +5,7 @@
 ## 📌 Project Overview
 
 In this project, I built a scalable and highly available infrastructure using AWS.
-
 The goal was to understand how real cloud systems handle traffic, scale automatically, and recover from failures.
-
 Instead of using a single EC2 instance, I created a system with:
 
 * Application Load Balancer
@@ -20,9 +18,7 @@ Instead of using a single EC2 instance, I created a system with:
 ## ⚙️ Step 1: Creating Launch Template
 
 First, I created a Launch Template, which is required for Auto Scaling.
-
 It defines how EC2 instances should be created:
-
 * OS: Amazon Linux 2023
 * Instance type: t3.micro
 * Security Group:
@@ -48,13 +44,11 @@ This ensures that every EC2 instance is ready and identical.
 ## 🎯 Step 2: Creating Target Group
 
 Then I created a Target Group to manage EC2 instances.
-
 * Protocol: HTTP
 * Port: 80
 * VPC: same as Project 3
 
 Health checks:
-
 * Protocol: HTTP
 * Path: `/`
 
@@ -67,17 +61,14 @@ This allows AWS to verify that the web server is actually working.
 Then I created an Application Load Balancer (ALB).
 
 Configuration:
-
 * Internet-facing
 * Connected to VPC
 * Two public subnets (different AZs for high availability)
 
 Security Group:
-
 * HTTP (80) → 0.0.0.0/0
 
 Listener:
-
 * HTTP:80
 * Forward to Target Group
 
@@ -88,26 +79,22 @@ Listener:
 After that, I created the Auto Scaling Group.
 
 Connected components:
-
 * Launch Template
 * Target Group
 * Load Balancer
 * VPC + 2 public subnets
 
 Configuration:
-
 * Desired capacity: 2
 * Min: 1
 * Max: 3
 
 Scaling Policy:
-
 * Target tracking
 * Metric: CPU utilization
 * Target: 50%
 
 This means:
-
 * If CPU > 50% → new EC2 is created
 * If CPU goes down → instances can be removed
 
@@ -118,22 +105,17 @@ This means:
 At first, instances were showing **unhealthy**.
 
 The issue:
-
 * Public IP auto-assign was disabled in public subnets
-
 Because of that:
-
 * EC2 couldn't access internet
 * Apache was not installed
 * Health checks failed
 
 Fix:
-
 * Enabled auto-assign public IPv4
 * Recreated instances
 
 Result:
-
 * 2 instances
 * Both healthy
 
