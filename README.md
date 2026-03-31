@@ -147,7 +147,7 @@ Result:
 * EC2 → runs Apache web server
 
 ## DIAGRAM
-project-4-load-balancer/diagram/Diagram Project 4.png
+![Project 4 Diagram](project-4-load-balancer/diagram/project4-architecture.png)
 ---
 
 ## 📸 Screenshots
