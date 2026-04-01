@@ -146,6 +146,8 @@ Result:
 * Auto Scaling → creates and replaces EC2
 * EC2 → runs Apache web server
 
+---
+
 ## 📐DIAGRAM
 
 ![Project 4 Diagram](project-4-load-balancer/diagram/Diagram%20Project%204.png)
