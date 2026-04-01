@@ -148,7 +148,7 @@ Result:
 
 ---
 
-## 📐DIAGRAM
+## 🏗️ Architecture Diagram
 
 ![Project 4 Diagram](project-4-load-balancer/diagram/Diagram%20Project%204.png)
 ---
